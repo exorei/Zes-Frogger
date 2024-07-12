@@ -169,6 +169,4 @@ if __name__ == "__main__":
         app = DataFrogApp()
         app.mainloop()
     except Exception as e:
-        print(f"An error occurred: {e}")
-    finally:
-        input("Press Enter to close the console...")
+        messagebox.showerror("Error", f"An error occurred: {e}")
