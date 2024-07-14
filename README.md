@@ -1,6 +1,7 @@
 # Zes-Frogger
 Data Frog Y2 PLUS 3.0 - .ZES FILE TOOL
 
+![example](https://github.com/user-attachments/assets/c5b745ad-f69a-42e1-9703-ab476f329030)
 
 
 TO BUILD FROM SOURCE-CODE:
@@ -11,3 +12,5 @@ Copy the command and execute inside the terminal:
 This will create a folder called 'Zes-Frogger' where you will find all the files included in repository.
 Run 'quick_compile.bat' and wait for it to finish. (you might have to install dependencies)
 Ready exe will be found inside a dist folder once the compilation is complete.
+
+IN DEVELOPMENT - FULL-NES LIBRARY LOADER AND ZES COMPILER (All in one, game and thumbnail downloader, archive compiler and memorycard loader)
