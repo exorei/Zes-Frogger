@@ -13,7 +13,7 @@ TO BUILD FROM SOURCE-CODE:
 - Right click on your desktop or inside a new folder and select **open in terminal**.
 Copy the command and execute inside the terminal:
 
-    git clone --recurse-submodules https://github.com/exorei/Zes-Frogger
+        git clone --recurse-submodules https://github.com/exorei/Zes-Frogger
 
 - This will create a folder called **Zes-Frogger** containing this repository.
 - Run **quick_compile.bat** located within that folder and wait for it to finish.
