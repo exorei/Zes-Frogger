@@ -150,19 +150,43 @@ class DataFrogApp(TkinterDnD.Tk):
     def on_drop(self, event):
         files = self.tk.splitlist(event.data)
         for file in files:
-            if file.lower().endswith('.nes'):
-                self.edit_path_nes.config(state='normal')
-                self.edit_path_nes.delete(0, tk.END)
-                self.edit_path_nes.insert(0, os.path.basename(file))
-                self.edit_path_nes.config(state='readonly')
-                game_name = os.path.splitext(os.path.basename(file))[0]
-                self.edit_name_game.delete(0, tk.END)
-                self.edit_name_game.insert(0, game_name)
+            if os.path.isdir(file):
+                self.process_folder(file)
+            elif file.lower().endswith('.nes'):
+                self.process_nes_file(file)
             elif file.lower().endswith('.png'):
-                self.edit_path_png.config(state='normal')
-                self.edit_path_png.delete(0, tk.END)
-                self.edit_path_png.insert(0, os.path.basename(file))
-                self.edit_path_png.config(state='readonly')
+                self.process_png_file(file)
+
+    def process_folder(self, folder_path):
+        nes_file = None
+        png_file = None
+
+        for root, dirs, files in os.walk(folder_path):
+            for file in files:
+                if file.lower().endswith('.nes'):
+                    nes_file = os.path.join(root, file)
+                elif file.lower().endswith('.png'):
+                    png_file = os.path.join(root, file)
+
+        if nes_file:
+            self.process_nes_file(nes_file)
+        if png_file:
+            self.process_png_file(png_file)
+
+    def process_nes_file(self, nes_file):
+        self.edit_path_nes.config(state='normal')
+        self.edit_path_nes.delete(0, tk.END)
+        self.edit_path_nes.insert(0, nes_file)
+        self.edit_path_nes.config(state='readonly')
+        game_name = os.path.splitext(os.path.basename(nes_file))[0]
+        self.edit_name_game.delete(0, tk.END)
+        self.edit_name_game.insert(0, game_name)
+
+    def process_png_file(self, png_file):
+        self.edit_path_png.config(state='normal')
+        self.edit_path_png.delete(0, tk.END)
+        self.edit_path_png.insert(0, png_file)
+        self.edit_path_png.config(state='readonly')
 
 if __name__ == "__main__":
     try:
