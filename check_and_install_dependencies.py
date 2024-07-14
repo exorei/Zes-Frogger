@@ -77,4 +77,4 @@ else:
     print('All required packages are installed.')
     log_file.close()
 
-input("Press Enter to exit...")
+input("Press Enter to run compiler.")
